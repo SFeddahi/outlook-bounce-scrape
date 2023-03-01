@@ -45,3 +45,8 @@ def find_bounces(current_rounds):
             all_emails.append(email)
     all_emails = list(set(all_emails))
     driver.close()
+
+    df = pd.DataFrame(all_emails, columns=['email'])
+    file_name = f'all_emails_{time.strftime("%Y%m%d-%H%M%S")}.csv'
+    df.to_csv(file_name, index=False)
+    print(f'Emails saved to {file_name}')
